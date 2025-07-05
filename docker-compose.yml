@@ -11,6 +11,18 @@ services:
     networks:
       - app_network
 
+  app:
+    build: .
+    ports:
+      - "3001:3000"
+    environment:
+      - DATABASE_URL=postgresql://user:admin@db:5432/pacifico
+      - NODE_ENV=production
+    depends_on:
+      - db
+    networks:
+      - app_network
+
   adminer:
     image: adminer
     restart: always

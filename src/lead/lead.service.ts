@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateLeadDto } from './dto/create-lead.dto';
 import { UpdateLeadDto } from './dto/update-lead.dto';
 import { PrismaClient } from '@prisma/client';
@@ -25,9 +25,10 @@ export class LeadService {
   }
 
   async findOne(id: number) {
-    return this.prisma.lead.findUniqueOrThrow({
+    const lead = this.prisma.lead.findFirst({
       where: { id },
     });
+    return lead ? lead : new NotFoundException();
   }
 
   async update(id: number, updateLeadDto: UpdateLeadDto) {

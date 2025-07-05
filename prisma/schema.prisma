@@ -22,4 +22,6 @@ model Lead {
   documentNumber String
   phone String
   email String
+
+  @@map("leads")
 }

@@ -11,7 +11,7 @@ import { LeadService } from './lead.service';
 import { CreateLeadDto } from './dto/create-lead.dto';
 import { UpdateLeadDto } from './dto/update-lead.dto';
 
-@Controller('lead')
+@Controller('')
 export class LeadController {
   constructor(private readonly leadService: LeadService) {}
 
