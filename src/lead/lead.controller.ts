@@ -64,4 +64,8 @@ export class LeadController {
       return { success: false, errorMessage: error.message };
     }
   }
+  @Get('health')
+  health(): { status: string } {
+    return { status: 'ok' };
+  }
 }
